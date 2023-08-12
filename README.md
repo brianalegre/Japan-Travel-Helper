@@ -4,6 +4,7 @@
 - A Web Applications to help with planning for a Japan trip
 
 ## Ideas
+# Must haves
  - Flights API
   - Expedia: 
   - ANA: https://airlabs.co/all-nippon-airways-developer-api
@@ -16,9 +17,17 @@
   - Trending things to do
   - Events happening
  - Current currency exchange
+ 
+# Nice to have
  - Export Data (Flights)
  - Save Trip 
- - Personal Suggestions
- - Room/Board
- 
+ - Personal Suggestions?
+ - Room/Board?
+ - Language helper?
 
+
+##  Technologies Used
+- MongoDb
+- Express
+- React
+- Node

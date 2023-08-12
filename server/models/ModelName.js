@@ -1,10 +1,50 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
-const ModelNameSchema = new Schema({
+const userSchema = new Schema({
+    firstName: {
+        type: String,
+        required: [true, 'First name is required'],
+        minlength: [2, 'First name must be at least 2 characters long'],
+        trim: true,
+    },
+    lastName: {
+        type: String,
+        required: [true, 'Last name is required'],
+        minlength: [2, 'Last name must be at least 2 characters long'],
+        trim: true,
+    },
+    email: {
+        type: String,
+        required: [true, 'Email is required'],
+        minlength: [5, 'Email must be at least 5 characters long'],
+        trim: true,
+        unique: true,
+    },
+    password: {
+        type: String,
+        required: [true, 'Password is required'],
+        minlength: [8, 'Password must be at least 8 characters long'],
+        trim: true,
+    },
 
 });
 
-const ModelNameSchema = mongoose.model('ModelName', ModelNameSchema);
+// set up pre-save middleware to create password
+userSchema.pre("save", async function (next) {
+    if (this.isNew || this.isModified("password")) {
+        const saltRounds = 10;
+        this.password = await bcrypt.hash(this.password, saltRounds);
+    }
 
-module.exports = ModelNameSchema
+    next();
+});
+
+// compare the incoming password with the hashed password
+userSchema.methods.isCorrectPassword = async function (password) {
+    return await bcrypt.compare(password, this.password);
+};
+
+const User = mongoose.model('User', userSchema);
+
+module.exports = User
