@@ -15,6 +15,11 @@ const currencySchema = new Schema({
         required: [true, 'USD is required'],
         trim: true,
     },
+    date: {
+        type: String,
+        required: [true, 'Date is required'],
+        trim: true,
+    },
 });
 
 // Export
