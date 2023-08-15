@@ -44,8 +44,72 @@ const resolvers = {
   },
 
   Mutation: {
+    // USERS
+    // Create a new user
+    addUser: async (
+      parent,
+      { firstName, lastName, email, password }
+    ) => {
+      const user = await User.create({
+        firstName,
+        lastName,
+        email,
+        password,
+      });
+      return user;
+    },
+    // Edit user
+    editUser: async (
+      parent,
+      { userId, ...userInfo }
+    ) => {
+      const cleanedInfo = removeNullishFields(userInfo);
+      const user = await User.findByIdAndUpdate(
+        userId,
+        { $set: cleanedInfo },
+        { new: true }
+      );
+      return user;
+    },
 
+    // CURRENCY
+    // Create a new currency
+    addCurrency: async (
+      parent,
+      { yen, usd, date }
+    ) => {
+      const currency = await Currency.create({
+        yen,
+        usd,
+        date,
+      });
+      return currency;
+    },
+
+    // FLIGHTS
+    // Create a new flight
+    addFlight: async (
+      parent,
+      { flightNumber, airline, departureLocation, arrivalLocation, dateDepature, dateArrival, timeDepart, price, returnDate, returnFlightTime, returnFlightAirline }
+    ) => {
+      const flight = await Flight.create({
+        flightNumber,
+        airline,
+        departureLocation,
+        arrivalLocation,
+        dateDepature,
+        dateArrival,
+        timeDepart,
+        price,
+        returnDate,
+        returnFlightTime,
+        returnFlightAirline,
+      });
+      return flight;
+    }
   },
-};
+}
 
+
+// Export
 module.exports = resolvers;
