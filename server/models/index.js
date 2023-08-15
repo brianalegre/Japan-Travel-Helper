@@ -1,5 +1,6 @@
-const ModelName = require("./ModelName");
+const User = require("./User");
+const Currency = require("./Currency");
 
 
 
-module.exports = { ModelName };
+module.exports = { User, Currency };
