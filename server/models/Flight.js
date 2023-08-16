@@ -35,7 +35,7 @@ const flightSchema = new Schema({
         required: [true, 'Date is required'],
         trim: true,
     },
-    timeDepart: {
+    timeDeparture: {
         type: String,
         required: [true, 'Time is required'],
         trim: true,
@@ -60,7 +60,11 @@ const flightSchema = new Schema({
         required: [true, 'Return airline is required'],
         trim: true,
     },
-
+    returnFlightNumber: {
+        type: String,
+        required: [true, 'Return flight number is required'],
+        trim: true,
+    }
 });
 
 
