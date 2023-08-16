@@ -2,6 +2,9 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
+// Bcrypt
+const bcrypt = require("bcrypt");
+
 
 // Schema
 const userSchema = new Schema({
