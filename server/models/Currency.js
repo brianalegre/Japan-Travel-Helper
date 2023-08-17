@@ -6,12 +6,12 @@ const { Schema } = mongoose;
 // Schema
 const currencySchema = new Schema({
     yen: {
-        type: Number,
+        type: String,
         required: [true, 'Yen is required'],
         trim: true,
     },
     usd: {
-        type: Number,
+        type: String,
         required: [true, 'USD is required'],
         trim: true,
     },

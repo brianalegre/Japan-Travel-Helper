@@ -1,7 +1,7 @@
-const User = require("./User");
+const NormalUser = require("./NormalUser");
 const Currency = require("./Currency");
 const Flight = require("./Flight");
 
 
 
-module.exports = { User, Currency, Flight };
+module.exports = { NormalUser, Currency, Flight };

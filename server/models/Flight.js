@@ -41,7 +41,7 @@ const flightSchema = new Schema({
         trim: true,
     },
     price: {
-        type: Number,
+        type: String,
         required: [true, 'Price is required'],
         trim: true,
     },

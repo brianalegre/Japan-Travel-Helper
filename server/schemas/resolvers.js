@@ -1,6 +1,6 @@
 // Import Models
 const {
-  User,
+  NormalUser,
   Currency,
   Flight,
 } = require("../models");
@@ -14,12 +14,12 @@ const resolvers = {
 
     // USERS
     // Get all users
-    users: async () => {
-      return await User.find();
+    normalUsers: async () => {
+      return await NormalUser.find();
     },
     // Get single user by ID
-    user: async (parent, { userId }) => {
-      return User.findOne({ _id: userId });
+    normalUser: async (parent, { userId }) => {
+      return NormalUser.findOne({ _id: userId });
     },
 
     // CURRENCY
@@ -46,11 +46,11 @@ const resolvers = {
   Mutation: {
     // USERS
     // Create a new user
-    addUser: async (
+    normalUser: async (
       parent,
       { firstName, lastName, email, password }
     ) => {
-      const user = await User.create({
+      const user = await NormalUser.create({
         firstName,
         lastName,
         email,
@@ -59,12 +59,12 @@ const resolvers = {
       return user;
     },
     // Edit user
-    editUser: async (
+    editNormalUser: async (
       parent,
       { userId, ...userInfo }
     ) => {
       const cleanedInfo = removeNullishFields(userInfo);
-      const user = await User.findByIdAndUpdate(
+      const user = await NormalUser.findByIdAndUpdate(
         userId,
         { $set: cleanedInfo },
         { new: true }

@@ -7,7 +7,7 @@ const bcrypt = require("bcrypt");
 
 
 // Schema
-const userSchema = new Schema({
+const normalUserSchema = new Schema({
     firstName: {
         type: String,
         required: [true, 'First name is required'],
@@ -37,7 +37,7 @@ const userSchema = new Schema({
 });
 
 // set up pre-save middleware to create password
-userSchema.pre("save", async function (next) {
+normalUserSchema.pre("save", async function (next) {
     if (this.isNew || this.isModified("password")) {
         const saltRounds = 10;
         this.password = await bcrypt.hash(this.password, saltRounds);
@@ -47,10 +47,10 @@ userSchema.pre("save", async function (next) {
 });
 
 // compare the incoming password with the hashed password
-userSchema.methods.isCorrectPassword = async function (password) {
+normalUserSchema.methods.isCorrectPassword = async function (password) {
     return await bcrypt.compare(password, this.password);
 };
 
-const User = mongoose.model('User', userSchema);
+const NormalUser = mongoose.model('NormalUser', normalUserSchema);
 
-module.exports = User
+module.exports = NormalUser

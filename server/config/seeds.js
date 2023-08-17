@@ -1,23 +1,23 @@
 const db = require("./connection");
-const { User, Currency, Flight } = require("../models");
+const { NormalUser, Currency, Flight } = require("../models");
 const moment = require("moment");
 const currentDate = moment(Date.now()).format("ll");
 
 db.once("open", async () => {
   // USERS
   // Delete all users
-  await User.deleteMany();
+  await NormalUser.deleteMany();
   console.log("*** DELETED ALL USERS ***");
 
   // Create users
-  const userOne = await User.create({
+  const userOne = await NormalUser.create({
     firstName: "Brian",
     lastName: "Hart",
     email: "test1@gmail.com",
     password: "test1234"
   })
 
-  const userTwo = await User.create({
+  const userTwo = await NormalUser.create({
     firstName: "John",
     lastName: "Doe",
     email: "test2@gmail.com",
@@ -35,8 +35,8 @@ db.once("open", async () => {
 
   // Create currencies
   const currencyOne = await Currency.create({
-    yen: 100,
-    usd: 1,
+    yen: "100",
+    usd: "1",
     date: currentDate
   })
 
@@ -58,7 +58,7 @@ db.once("open", async () => {
     dateDepature: "2021-01-01",
     dateArrival: "2021-01-02",
     timeDeparture: "12:00",
-    price: 1000,
+    price: "1000",
     returnDate: "2021-01-03",
     returnFlightTime: "12:00",
     returnFlightAirline: "ANA",

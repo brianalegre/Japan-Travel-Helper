@@ -1,7 +1,7 @@
 const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
-    type User {
+    type NormalUser {
         _id: ID
         firstName: String
         lastName: String
@@ -11,13 +11,13 @@ const typeDefs = gql`
 
     # type Auth {
     #     token: ID!
-    #     user: User
+    #     user: NormalUser
     # }
 
     type Currency {
         _id: ID
-        yen: Number
-        usd: Number
+        yen: String
+        usd: String
         date: String
     }
 
@@ -30,7 +30,7 @@ const typeDefs = gql`
         dateDepature: String
         dateArrival: String
         timeDeparture: String
-        price: Number
+        price: String
         returnDate: String
         returnFlightTime: String
         returnFlightAirline: String
@@ -39,12 +39,12 @@ const typeDefs = gql`
 
     type Query {
         # USER
-        me(_id: ID!): User
-        users: [User]
+        normalUser(_id: ID!): NormalUser
+        normalUsers: [NormalUser]
 
         # CURRENCY
         currency(_id: ID!): Currency
-        currencies: [Currency]
+        currencys: [Currency]
 
         # FLIGHT
         flight(_id: ID!): Flight
@@ -53,19 +53,19 @@ const typeDefs = gql`
 
     type Mutation {
         # USER
-        addUser(firstName: String!, lastName: String!, email: String!, password: String!): User
-        editUser(_id: ID!, firstName: String, lastName: String, email: String, password: String): User
-        deleteUser(_id: ID!): User
-        login(email: String!, password: String!): User
+        addNormalUser(firstName: String!, lastName: String!, email: String!, password: String!): NormalUser
+        editNormalUser(_id: ID!, firstName: String, lastName: String, email: String, password: String): NormalUser
+        deleteNormalUser(_id: ID!): NormalUser
+        loginNoramlUser(email: String!, password: String!): NormalUser
 
         # CURRENCY
-        addCurrency(yen: Number!, usd: Number!, date: String!): Currency
-        editCurrency(_id: ID!, yen: Number, usd: Number, date: String): Currency
+        addCurrency(yen: String!, usd: String!, date: String!): Currency
+        editCurrency(_id: ID!, yen: String, usd: String, date: String): Currency
         deleteCurrency(_id: ID!): Currency
 
         # FLIGHT
-        addFlight(flightNumber: String!, airline: String!, departureLocation: String!, arrivalLocation: String!, dateDepature: String!, dateArrival: String!, timeDeparture: String!, price: Number!, returnDate: String!, returnFlightTime: String!, returnFlightAirline: String!, returnFlightNumber: String!): Flight
-        editFlight(_id: ID!, flightNumber: String, airline: String, departureLocation: String, arrivalLocation: String, dateDepature: String, dateArrival: String, timeDeparture: String, price: Number, returnDate: String, returnFlightTime: String, returnFlightAirline: String, returnFlightNumber: String): Flight
+        addFlight(flightNumber: String!, airline: String!, departureLocation: String!, arrivalLocation: String!, dateDepature: String!, dateArrival: String!, timeDeparture: String!, price: String!, returnDate: String!, returnFlightTime: String!, returnFlightAirline: String!, returnFlightNumber: String!): Flight
+        editFlight(_id: ID!, flightNumber: String, airline: String, departureLocation: String, arrivalLocation: String, dateDepature: String, dateArrival: String, timeDeparture: String, price: String, returnDate: String, returnFlightTime: String, returnFlightAirline: String, returnFlightNumber: String): Flight
         deleteFlight(_id: ID!): Flight
     }
 `;
