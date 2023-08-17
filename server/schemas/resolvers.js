@@ -46,7 +46,7 @@ const resolvers = {
   Mutation: {
     // USERS
     // Create a new user
-    normalUser: async (
+    addNormalUser: async (
       parent,
       { firstName, lastName, email, password }
     ) => {
