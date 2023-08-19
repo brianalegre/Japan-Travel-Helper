@@ -16,10 +16,8 @@ const options = {
         q: '1.0'
     },
     headers: {
-        // 'X-RapidAPI-Key': CURRENCY_API_KEY,
-        // 'X-RapidAPI-Host': CURRENCY_API_HOST
-        'X-RapidAPI-Key': "445fda8cf1msh70da80e5f525233p18eca4jsn9bcc56577356",
-        'X-RapidAPI-Host': 'currency-exchange.p.rapidapi.com'
+        'X-RapidAPI-Key': CURRENCY_API_KEY,
+        'X-RapidAPI-Host': CURRENCY_API_HOST
     }
 };
 
