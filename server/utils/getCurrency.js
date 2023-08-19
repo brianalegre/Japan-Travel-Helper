@@ -1,8 +1,9 @@
 const axios = require('axios');
+const dotenv = require('dotenv');
 
 // Import API key
-const CURRENCY_API_KEY = process.env.CURRENCY_API_KEY;
-const CURRENCY_API_HOST = process.env.CURRENCY_API_HOST;
+const currencyAPI = `${process.env.CURRENCY_API_KEY}`;
+const currncyHost = `${process.env.CURRENCY_API_HOST}`;
 
 
 async function fetchCurrency() {
@@ -16,8 +17,9 @@ async function fetchCurrency() {
             q: '1.0'
         },
         headers: {
-            'X-RapidAPI-Key': CURRENCY_API_KEY,
-            'X-RapidAPI-Host': CURRENCY_API_HOST
+            'X-RapidAPI-Key': currencyAPI,
+            'X-RapidAPI-Host': currncyHost
+
         }
     };
 
@@ -25,10 +27,10 @@ async function fetchCurrency() {
         const response = await axios.request(options);
         const responseData = response.data;
         let formattedResponse = responseData.toFixed(4);
-        console.log("1 JPY =", formattedResponse, "USD");
+        return "1 JPY = " + formattedResponse + " USD";
 
     } catch (error) {
-        console.error(error);
+        return "Error fetching currency data: " + error.message + currencyAPI;
     }
 }
 

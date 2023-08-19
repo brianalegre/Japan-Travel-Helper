@@ -2,11 +2,12 @@ const express = require('express');
 const { ApolloServer } = require('apollo-server-express');
 const path = require('path');
 const { authMiddleware } = require('./utils/auth');
+const dotenv = require('dotenv');
 
 
 const { typeDefs, resolvers } = require('./schemas');
 const db = require('./config/connection');
-const fetchCurrency = require('./utils/Currency')
+const fetchCurrency = require('./utils/getCurrency')
 
 
 const PORT = process.env.PORT || 3001;
@@ -52,7 +53,9 @@ startApolloServer(typeDefs, resolvers);
 // Call the function to fetch currency
 async function main() {
   const currencyResult = await fetchCurrency();
+  console.log("CURRENCY_API_HOST: " + process.env.CURRENCY_API_HOST);
   console.log(currencyResult);
 }
 
+console.log("CURRENCY_API_HOST: " + process.env.CURRENCY_API_HOST);
 main();
