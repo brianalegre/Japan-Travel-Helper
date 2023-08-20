@@ -2,11 +2,11 @@ const axios = require('axios');
 const dotenv = require('dotenv');
 
 // Import API key
-const currencyAPI = `${process.env.CURRENCY_API_KEY}`;
-const currncyHost = `${process.env.CURRENCY_API_HOST}`;
+const currencyAPI = process.env.CURRENCY_API_KEY;
+const currncyHost = process.env.CURRENCY_API_HOST;
 
 
-async function fetchCurrency() {
+async function getCurrency() {
 
     const options = {
         method: 'GET',
@@ -30,10 +30,10 @@ async function fetchCurrency() {
         return "1 JPY = " + formattedResponse + " USD";
 
     } catch (error) {
-        return "Error fetching currency data: " + error.message + currencyAPI;
+        return "Error getCurrency data: " + error.message
     }
 }
 
-module.exports = fetchCurrency;
+module.exports = getCurrency;
 
 

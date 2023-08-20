@@ -7,8 +7,10 @@ const dotenv = require('dotenv');
 
 const { typeDefs, resolvers } = require('./schemas');
 const db = require('./config/connection');
-const fetchCurrency = require('./utils/getCurrency')
 
+// External API Calls
+const getCurrency = require('./externalAPI/getCurrency')
+const getWeather = require('./externalAPI/getWeather')
 
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -50,12 +52,17 @@ const startApolloServer = async (typeDefs, resolvers) => {
 // Call the async function to start the server
 startApolloServer(typeDefs, resolvers);
 
-// Call the function to fetch currency
-async function main() {
-  const currencyResult = await fetchCurrency();
-  console.log("CURRENCY_API_HOST: " + process.env.CURRENCY_API_HOST);
+// Call the function to getCurrency
+async function japanCurrency() {
+  const currencyResult = await getCurrency();
   console.log(currencyResult);
 }
 
-console.log("CURRENCY_API_HOST: " + process.env.CURRENCY_API_HOST);
-main();
+// Call the function to getCurrency
+async function japanWeather() {
+  const weatherResult = await getWeather();
+  console.log(weatherResult);
+}
+
+// japanCurrency();
+japanWeather();

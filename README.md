@@ -10,13 +10,13 @@
   - ANA: https://airlabs.co/all-nippon-airways-developer-api
   - Others:https://rapidapi.com/collection/flight-data-apis
  
- - Weahter History API:
+ - Weahter History API: 
  - Weather Current API: 
  - TripAdvisor API: https://www.tripadvisor.com/developers
   - New things to do
   - Trending things to do
   - Events happening
- - Current currency exchange
+ - Current currency exchange: currency-exchange.p.rapidapi.com
  
 # Nice to have
  - Export Data (Flights)
