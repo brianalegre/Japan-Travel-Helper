@@ -12,6 +12,8 @@
  
  - Weahter History API: 
  - Weather Current API: 
+  -- https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/[location]/[date1]/[date2]?key=YOUR_API_KEY 
+  -- https://www.visualcrossing.com/resources/documentation/weather-data/how-to-query-weather-forecasts-from-the-past-historical-forecasts/
  - TripAdvisor API: https://www.tripadvisor.com/developers
   - New things to do
   - Trending things to do
